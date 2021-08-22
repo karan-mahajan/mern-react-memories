@@ -32,7 +32,6 @@ const Form = ({ currentId, setCurrentId }) => {
     // }, [post])
 
     const handleSubmit = (e) => {
-        console.log("submit", currentId, postData);
         e.preventDefault();
         if (currentId) {
             dispatch(updatePost(currentId, postData))

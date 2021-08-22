@@ -14,9 +14,10 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log("App.jss", currentId);
     const getAllPosts = async () => {
-      dispatch(getPosts());
+      setTimeout(() => {
+        dispatch(getPosts());
+      }, 100)
     }
     getAllPosts();
   }, [dispatch, currentId]);
