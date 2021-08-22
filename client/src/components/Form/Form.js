@@ -3,31 +3,37 @@ import useStyles from './styles'
 import { TextField, Button, Typography, Paper } from '@material-ui/core';
 import FileBase from 'react-file-base64';
 import { useDispatch, useSelector } from 'react-redux';
-import { createPost, updatePost } from '../../actions/posts';
+import { createPost, updatePost } from '../../actions/actions';
 
 const Form = ({ currentId, setCurrentId }) => {
     const classes = useStyles();
-    const post = useSelector((state) => currentId ? state.posts.find((p) => p._id === currentId) : null);
+    // const post = useSelector((state) => currentId ? state.posts.find((p) => p._id === currentId) : null);
+    const posts = useSelector((state) => state.posts);
     const [postData, setPostData] = useState({
         creator: '',
         title: '',
         message: '',
-        tags: '',
+        tags: [],
         selectedFile: ''
     });
-    const dispatch = useDispatch();
+
     useEffect(() => {
-        if (post) {
+        if (currentId) {
+            const post = posts.find((post) => post._id === currentId)
             setPostData(post);
         }
-    }, [post])
+    }, [currentId, posts]);
+    const dispatch = useDispatch();
+    // useEffect(() => {
+    //     console.log(post)
+    //     if (post) {
+    //         setPostData(post);
+    //     }
+    // }, [post])
 
     const handleSubmit = (e) => {
+        console.log("submit", currentId, postData);
         e.preventDefault();
-        if (!postData.title) {
-            alert('Values');
-            return;
-        }
         if (currentId) {
             dispatch(updatePost(currentId, postData))
         }

@@ -6,8 +6,8 @@ const postSchema = mongoose.Schema({
     creator: String,
     tags: [String],
     selectedFile: String,
-    likecount: {
-        tpye: Number,
+    likeCount: {
+        type: Number,
         default: 0
     },
     createdAt: {

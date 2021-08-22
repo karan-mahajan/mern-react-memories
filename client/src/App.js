@@ -2,11 +2,11 @@ import './App.css';
 import { Container, AppBar, Typography, Grow, Grid } from '@material-ui/core'
 import memories from './images/memories.png'
 import Form from './components/Form/Form'
-import Posts from './components/Posts/Posts';
+import Posts from './components/Posts/PostsContainer';
 import useStyles from './styles'
 import { useDispatch } from 'react-redux'
 import { useEffect, useState } from 'react'
-import { getPosts } from './actions/posts'
+import { getPosts } from './actions/actions'
 
 function App() {
   const classes = useStyles();
@@ -14,7 +14,11 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getPosts());
+    console.log("App.jss", currentId);
+    const getAllPosts = async () => {
+      dispatch(getPosts());
+    }
+    getAllPosts();
   }, [dispatch, currentId]);
 
   return (
