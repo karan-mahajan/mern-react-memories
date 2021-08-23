@@ -15,9 +15,10 @@ function App() {
 
   useEffect(() => {
     const getAllPosts = async () => {
-      setTimeout(() => {
-        dispatch(getPosts());
-      }, 100)
+      // setTimeout(() => {
+      //   dispatch(getPosts());
+      // }, 100)
+      dispatch(getPosts());
     }
     getAllPosts();
   }, [dispatch, currentId]);

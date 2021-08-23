@@ -95,7 +95,7 @@ const Form = ({ currentId, setCurrentId }) => {
                         type="file"
                         multiple={false}
                         onDone={({ base64 }) => setPostData({ ...postData, selectedFile: base64 })} /></div>
-                <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth style={{ marginBottom: '15px' }}>Submit</Button>
+                <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth style={{ marginBottom: '15px' }}>{currentId ? 'Update' : 'Create'}</Button>
                 <Button variant="contained" color="secondary" size="small" onClick={clear} fullWidth>Clear</Button>
             </form>
         </Paper >
